@@ -24,7 +24,7 @@ public class Cliente {
     @Column(nullable = false, length = 20)
     private TipoCliente tipo;
 
-    protected Cliente() {
+    public Cliente() {
         // exigido pelo JPA
     }
 
