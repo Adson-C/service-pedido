@@ -29,6 +29,9 @@ jobs:
 
       mongodb:
         image: mongo:7.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: pedidos
+          MONGO_INITDB_ROOT_PASSWORD: pedidos
         ports:
           - 27017:27017
         options: >-
