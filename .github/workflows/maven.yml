@@ -27,6 +27,16 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+      mongodb:
+        image: mongo:7.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
 
@@ -39,3 +49,5 @@ jobs:
 
       - name: Build e testes com Maven
         run: mvn -B -ntp verify
+        env:
+          SPRING_MONGODB_URI: mongodb://pedidos:pedidos@localhost:27017/pedidos_test?authSource=admin
